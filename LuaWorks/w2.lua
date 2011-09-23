@@ -14,8 +14,10 @@ local function example(x)
 end
 
 -- write your own function here
---
-
+local function hi(Tc)
+   local Tf = (9/5)* Tc + 32
+   return Tf
+end
 
 
 run = function()
@@ -30,8 +32,12 @@ run = function()
    WorkPad1:setText(eg1 .. ", " .. eg2 .. ", " .. eg3)
 
    -- call your function to do calculation
-
+local hi1 = hi (0)
+local hi2 = hi (987)
+local hi3 = hi (32874)
    -- and put result on WorkPad2
+
+WorkPad2:setText(hi1 .. ", " .. hi2 .. ", " .. hi3)
 
 
 end
