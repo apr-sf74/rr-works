@@ -17,10 +17,16 @@ end
 
 local function towerStep1()
 	-- homework
+	towers["t1"] = {3, 2}
+	towers["t2"] = {}
+	towers["t3"] = {1}
 end
 
 local function towerStep6()
 	-- homework
+	towers["t1"] = {1}
+	towers["t2"] = {}
+	towers["t3"] = {3,2}
 end
 
 run = function()
@@ -42,7 +48,7 @@ run = function()
 			(towers["t"..i][2] or " ")..",".. 
 			(towers["t"..i][3] or " ") )
 	end
-	
+
 	towerStep6()
 	for i=1,3 do
 		WorkTable[i+6]:setText("step6 tower ".. i .. " contain " .. 
