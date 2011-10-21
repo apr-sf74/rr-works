@@ -16,11 +16,11 @@ local function setup()
 
 	display.setStatusBar( display.HiddenStatusBar )
 
-	local background = display.newImage( "bkg_bricks.png", true )
+	local background = display.newImage( "Chicken Alex2.jpg", true )
 	background.x = display.contentWidth / 2
 	background.y = display.contentHeight / 2
 
-	local ground = display.newImage( "floor.png" )
+	local ground = display.newImage( "floor2.bmp" )
 	ground.x = 240; ground.y = 320
 	physics.addBody( ground, "static", { friction=0.6 } )
 
@@ -37,6 +37,24 @@ local function setup()
 	
 	local plate = display.newImage( "plate.png" )
 	plate.x = 80; plate.y = 200
+	physics.addBody( plate, { density=1.0, bounce=0.2 } )
+	plate.isFixedRotation = true 
+	plate.myName = "plate"
+
+	-- Add touch event listeners to objects
+	plate:addEventListener( "touch", hanoiDrag.startDrag )
+
+	local plate = display.newImage( "grill.jpg" )
+	plate.x = 80; plate.y = 160
+	physics.addBody( plate, { density=1.0, bounce=0.2 } )
+	plate.isFixedRotation = true 
+	plate.myName = "plate"
+
+	-- Add touch event listeners to objects
+	plate:addEventListener( "touch", hanoiDrag.startDrag )
+
+	local plate = display.newImage( "trippy.gif" )
+	plate.x = 80; plate.y = 120
 	physics.addBody( plate, { density=1.0, bounce=0.2 } )
 	plate.isFixedRotation = true 
 	plate.myName = "plate"
