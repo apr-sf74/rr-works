@@ -38,25 +38,25 @@ local function setup()
 	local plate = display.newImage( "plate.png" )
 	plate.x = 80; plate.y = 200
 	physics.addBody( plate, { density=1.0, bounce=0.2 } )
-	plate.isFixedRotation = true 
+	plate.isFixedRotation = true
 	plate.myName = "plate"
 
 	-- Add touch event listeners to objects
 	plate:addEventListener( "touch", hanoiDrag.startDrag )
 
-	local plate = display.newImage( "grill.jpg" )
+	local plate = display.newImage( "plate2.png" )
 	plate.x = 80; plate.y = 160
 	physics.addBody( plate, { density=1.0, bounce=0.2 } )
-	plate.isFixedRotation = true 
+	plate.isFixedRotation = true
 	plate.myName = "plate"
 
 	-- Add touch event listeners to objects
 	plate:addEventListener( "touch", hanoiDrag.startDrag )
 
-	local plate = display.newImage( "trippy.gif" )
+	local plate = display.newImage( "plate3.png" )
 	plate.x = 80; plate.y = 120
 	physics.addBody( plate, { density=1.0, bounce=0.2 } )
-	plate.isFixedRotation = true 
+	plate.isFixedRotation = true
 	plate.myName = "plate"
 
 	-- Add touch event listeners to objects
