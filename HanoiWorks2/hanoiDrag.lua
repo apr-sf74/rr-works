@@ -35,13 +35,25 @@ local function isTopPlate(plate)
 	end
 end
 
+
 local function isSmallerThanTop(plateId, stickIdx)
-	-- homework
+	
 	
 	-- check corner case, empty stick?
+	local theStick = gSticks[stickIdx]
+	local thePlates = theStick.plates
+
+	if #theStick.plates == 0 then
+		return true
+	end
+
 	
 	-- check normal case, get the top plate id and compare with it
-	
+	local theTopPlateId = thePlates[#thePlates]
+	if plateId < theTopPlateId then
+		return true
+	end
+    return false
 end
 
 local function movePlateFromStickToStick(plateId, fromStickIdx, toStickIdx)
@@ -67,23 +79,37 @@ end
 -- another to freeze all other plates during dragging
 -- this is also preventing player from corrupting the game by invalid drag
 local function activateTopPlates()
-	-- bonus homework	
+
 end
 
 local function freezeOtherPlate(plateId)
-	-- bonus homework
+
+
+
 end
 
+
+
 local function isGameFinished()
-	-- homework
+
+	
 	-- conditions:
+	if (#gSticks[1].plates == 0 and #gSticks[2].plates == 0) or (#gSticks[1].plates == 0 and #gSticks[3].plates == 0) then
+		return true
+	end
 	-- stick 1 is empty
+		
 	-- either either 2 or either 3 is empty, i.e. all plates moved
 end
 
 local function bestNumberOfStepsForPlates(numOfPlates)
 	-- calculate the best number
-	-- homework
+
+	
+
+	
+
+
 	-- formula, bestMove (n) =  bestMove(n-1) + 1 + bestMove(n-1) 
 	-- i.e. bestMove is by 
 		-- moving plate1..plate(N-1) to stick 2, need bestMove(N-1) steps
@@ -92,7 +118,8 @@ local function bestNumberOfStepsForPlates(numOfPlates)
 	-- and bestMove(1) = 1
 	
 	-- example answer for 3 plates
-	return 7
+	return math.pow(2,numOfPlates) - 1
+
 end
 
 local function isBestMovement()
@@ -141,6 +168,7 @@ function startDrag( event )
 		-- Make body type temporarily "kinematic" (to avoid gravitional forces)
 		event.target.bodyType = "kinematic"
 		
+		
 		-- Stop current motion, if any
 		event.target:setLinearVelocity( 0, 0 )
 		event.target.angularVelocity = 0
@@ -161,13 +189,15 @@ function startDrag( event )
 
 		end
 	end
+	
 
 	-- Stop further propagation of touch event!
 	return true
 end
 
+
 local function recoverDynamic(obj)
-	print ("recover plate ".. obj.myName)
+	print ("recover plate".. obj.myName)
 	obj.bodyType = "dynamic"
 end
 
