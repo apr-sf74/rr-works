@@ -10,9 +10,13 @@
 
 local physics = require("physics")
 local hanoiDrag = require("hanoiDrag")
+local backgroundMusic = audio.loadStream("Tetris.mp3")
+ backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1,}  )  
+narrationChannel = audio.play( narrationSpeech, { duration=60000, onComplete=NarrationFinished } )  
+laserChannel = audio.play( laserSound )  
 
-gNumOfPlates = 3
 
+gNumOfPlates = 10
 gSticks = {}
 gPlates = {}
 
@@ -68,7 +72,7 @@ local function setup()
 
 	display.setStatusBar( display.HiddenStatusBar )
 
-	local background = display.newImage( "bkg_bricks.png", true )
+	local background = display.newImage( "Blocks.jpg", true )
 	background.x = display.contentWidth / 2
 	background.y = display.contentHeight / 2
 
@@ -76,6 +80,7 @@ local function setup()
 	ground.x = 240; ground.y = 320
 	physics.addBody( ground, "static", { friction=0.6 } )
 
+	
 	for i=1,3 do
 		gSticks[i] = display.newImage( "stick.png" )
 		gSticks[i].x = 80+160*(i-1); gSticks[i].y = 142
