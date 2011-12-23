@@ -13,7 +13,7 @@
 require ("physics")
 
 physics.start()
-physics.setGravity(0,9.8)
+physics.setGravity(10,20)
 
 -- physics.setDrawMode("hybrid")
 
@@ -74,10 +74,10 @@ function initBackground()
 end
 
 function inithen()
-	hen = display.newImage( "hen.jpeg", henFixedCoordX, 300)
+	hen = display.newImage( "hen.jpeg", henFixedCoordX, 300,henFixedCoordY,1)
 	physics.addBody(hen, "dynamic", {friction=0, bounce=0.1, radius=henRadius})
 	mainGroup:insert(hen)	
-	hen.isFixedRotation = false
+	hen.isFixedRotation = true
 	
 	local onScreenTouch = function(event)
 		if(event.phase == "began") then
@@ -88,8 +88,6 @@ function inithen()
 			physics.setGravity(0,9.8)
 		end
 	end
-
-end
 	
 	hen.x1 = false
 	hen.x2 = false
@@ -197,7 +195,7 @@ function startGame()
 	Runtime:addEventListener("enterFrame", moveMainGroup)
 
 	local increaseDifficulty = function(event)
-	
+	--
 	end
 end
 
